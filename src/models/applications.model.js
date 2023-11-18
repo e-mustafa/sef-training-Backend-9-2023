@@ -8,7 +8,7 @@ const applicationSchema = new Schema({
 
 	mobileNumber: { type: Number },
 	email: { type: String, required: true },
-	exp: { type: String, required: true },
+	exp: { type: Number, required: true },
 	job: [{ type: mongoose.Types.ObjectId, ref: 'Job' }],
 	cv: { type: String, required: true },
 });

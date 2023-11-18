@@ -13,6 +13,8 @@ const courseSchema = new Schema(
 			type: Number,
 			required: [true, 'please provide the course level'],
 			// enum: enum_coursesLevels,
+			// min: 1,
+			// max: 10,
 			// >0
 		},
 		status: {
@@ -20,34 +22,28 @@ const courseSchema = new Schema(
 			enum: enum_coursesStatus,
 			required: [true, 'please provide the course level'],
 			trim: true,
+			lowercase: true,
 		},
 		sessions: {
 			type: Number,
 			required: [true, 'please provide sessions number'],
 		},
-		languages: [
-			{
-				type: String,
-				required: true,
-				trim: true,
-			},
-		],
+		language: {
+			type: String,
+			required: [true, 'please provide course language'],
+			trim: true,
+		},
 		requirements: String,
 		assessments: String,
 		introduction: String,
-		materials: [
-			{
-				type: String,
-			},
-		],
+		materials: String,
 		image: {
 			type: String,
 			trim: true,
 		},
 		certificate: {
-			type: Boolean,
-			required: [true, 'please provide if certificated'],
-			default: true,
+			type: String,
+			required: [true, 'please provide certificate role'],
 		},
 		duration: {
 			type: String,
@@ -90,11 +86,11 @@ courseSchema.virtual('instructor', {
 	foreignField: '_id',
 });
 
-courseSchema.virtual('students', {
-	ref: 'User',
-	localField: 'enrolledStudents',
-	foreignField: '_id',
-});
+// courseSchema.virtual('students', {
+// 	ref: 'User',
+// 	localField: 'enrolledStudents.student',
+// 	foreignField: '_id',
+// });
 
 courseSchema.virtual('exam', {
 	ref: 'Exam',

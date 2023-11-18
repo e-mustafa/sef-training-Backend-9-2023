@@ -1,4 +1,4 @@
-const { User } = require("../models/userModel");
+const { User } = require("../models/user.model");
 const { paginate } = require("../utils/pagination");
 const { genUserId } = require("../utils/userIdGenerator");
 const bcrypt = require('bcrypt')

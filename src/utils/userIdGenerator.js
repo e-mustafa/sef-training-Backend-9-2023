@@ -1,5 +1,5 @@
 const { randomBytes } = require("crypto");
-const { User } = require("../models/userModel")
+const { User } = require("../models/user.model")
 async function id() {
     let userId;
     do {
